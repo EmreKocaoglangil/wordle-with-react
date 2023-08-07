@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 214 44% 31%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+
+    --green: #6aaa64;
+    --darkendGreen: #538d4e;
+    --yellow: #c9b458;
+    --darkendYellow: #b59f3b;
+    --spellingBeeYellow: #f7da21;
+    --lightGray: #d3d6da;
+    --gray: #86888a;
+    --gray-2: #dcdcdc;
+    --gray-3: #dfdfdf;
+    --gray-4: #cccccc;
+    --darkGray: #939598;
+    --white: #fff;
+    --black: #212121;
+    --black-2: #121212;
+    --black-3: #363636;
+    --black-4: #cfcfcf;
+    --blue-2: #477aaa;
+    --blue-5: #4f85e5;
+    --orange: #f5793a;
+    --blue: #85c0f9;
+    --outlineBlue: #2671dc;
+    --linkBlue: #477aaa;
+  }
+
+
+  :root[class~="dark"] {
+    --background: red;
+    --foreground: blue;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 352 88% 52%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+
+    --color-tone-1: #ffffff;
+    --color-tone-2: #818384;
+    --color-tone-3: #565758;
+    --color-tone-4: #3a3a3c;
+    --color-tone-5: #272729;
+    --color-tone-6: #1a1a1b;
+    --color-tone-7: #121213;
+    --color-tone-8: #ffffff;
+    --color-tone-9: #424242;
+    --color-tone-10: #dfdfdf;
+    --color-tone-11: #dfdfdf;
+    --color-tone-12: #dfdfdf;
+    --color-nav-hover: #2f2f31;
+    --opacity-50: rgba(0, 0, 0, 0.5);
+    --error-background: var(--color-tone-7);
+    --icon-disabled: #59595a;
+    /* --spelling-bee: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/SpellingBee-Icon-Normalized-Color.svg);
+    --daily: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Crossword-Icon-Normalized-Color.svg);
+    --mini: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Mini-Icon-Normalized-Color.svg);
+    --tiles: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Tiles-Icon-Normalized-Color.svg);
+    --sudoku: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Sudoku-Icon-Normalized-Color.svg);
+    --vertex: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Vertex-Icon-Normalized-Color.svg);
+    --letter-boxed: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/LetterBoxed-Icon-Normalized-Color.svg);
+    --digits: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Digits-Icon-Dark-Mode.svg);
+    --connections: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Connections-Icon-Dark-Mode.svg);
+    --nyt: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/NYT-Icon-Normalized-Color.svg);
+    --athletic: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/Athletic-Icon-Normalized-Color.svg);
+    --stats-auth: url(https://www.nytimes.com/games-assets/v2/assets/wordle/page-icons/stats-auth-cta.svg);
+    --wordlebot: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/WordleBot-Icon-Normalized-Color.svg);
+    --wordlebot-walking-icon: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/WordleBot-Walking-Icon-Color.svg);
+    --stats-problem: url(https://www.nytimes.com/games-assets/v2/assets/wordle/page-icons/transparent-wordle-issue.svg);
+    --link-info: url(https://www.nytimes.com/games-assets/v2/assets/wordle/page-icons/dark-mode-wordle-link.svg);
+    --gameslogo: url(https://www.nytimes.com/games-assets/v2/assets/wordle/page-icons/whitegameslogo.svg);
+    --california-privacy-icon: url(https://www.nytimes.com/games-assets/v2/assets/wordle/nav-icons/california-privacy-dark.svg); */
+    --promo-icon-height: 27px;
+    --promo-icon-width: 27px;
+    --promo-icon-bg-size: 35px;
+    --promo-icon-padding: 4px;
+    --promo-icon-height: 40px;
+    --promo-icon-width: 40px;
+    --promo-icon-padding: 0px;
+    /* --svg-arrow-fill: var(--color-tone-7);
+    --svg-arrow-stroke: white;
+    --svg-arrow-fill-hover: white;
+    --svg-arrow-stroke-hover: black; */
+  }
+
+  body,
+  #root {
+    @apply min-h-[100vh] w-full
+  }
+}
