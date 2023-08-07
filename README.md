@@ -10,6 +10,7 @@ Technologies that we use:
 - React Router DOM v6
 - Context API
 - TailwindCSS
+- Mock Service Worker
 
 ## Contribution
 
