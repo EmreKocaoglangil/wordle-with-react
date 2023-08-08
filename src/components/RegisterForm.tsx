@@ -5,6 +5,7 @@ import { useAuth } from "@/auth-provider";
 import { useMutation } from "react-query";
 import request from "@/services";
 import { Button, Input } from "./ui/forward";
+import { useToast } from "./ui/use-toast";
 import {
 	Form,
 	FormControl,
@@ -35,11 +36,12 @@ const RegisterSchema = z
 type RegisterInput = z.infer<typeof RegisterSchema>;
 
 export default function RegisterForm() {
-	const { handleAuth, isAuth } = useAuth();
+	const { handleAuth } = useAuth();
+	const { toast } = useToast();
 	// Mutations
 	const { mutate, isLoading } = useMutation(
 		(payload: RegisterInput) =>
-			request(import.meta.env.VITE_APP_API_URL + "/register", {
+			request(import.meta.env.VITE_APP_API_URL + "/registera", {
 				method: "POST",
 				body: JSON.stringify(payload),
 			}),
@@ -48,7 +50,11 @@ export default function RegisterForm() {
 				handleAuth(result);
 			},
 			onError: () => {
-				console.log("HATA");
+				toast({
+					title: "Kayıt Hatası",
+					description: "Kayıt yaparken hata meydana geldi",
+					duration: 2000,
+				});
 			},
 		}
 	);

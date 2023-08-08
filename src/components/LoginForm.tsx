@@ -5,6 +5,7 @@ import { Button, Input } from "./ui/forward";
 import { useAuth } from "@/auth-provider";
 import { useMutation } from "react-query";
 import request from "@/services";
+import { useToast } from "./ui/use-toast";
 import {
 	Form,
 	FormControl,
@@ -29,7 +30,7 @@ type LoginInput = z.infer<typeof LoginSchema>;
 
 export default function LoginForm() {
 	const { handleAuth } = useAuth();
-
+	const { toast } = useToast();
 	// Mutations
 	const { mutate, isLoading } = useMutation(
 		(payload: LoginInput) =>
@@ -42,7 +43,11 @@ export default function LoginForm() {
 				handleAuth(result);
 			},
 			onError: () => {
-				console.log("HATA");
+				toast({
+					title: "Giriş Hatası",
+					description: "Giriş yaparken hata meydana geldi",
+					duration: 2000,
+				});
 			},
 		}
 	);
