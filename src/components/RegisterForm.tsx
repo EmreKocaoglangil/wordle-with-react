@@ -4,7 +4,15 @@ import z from "zod";
 import { useAuth } from "@/auth-provider";
 import { useMutation } from "react-query";
 import request from "@/services";
-import { Button, Input, Label } from "./ui/forward";
+import { Button, Input } from "./ui/forward";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
 
 const RegisterSchema = z
 	.object({
@@ -27,8 +35,7 @@ const RegisterSchema = z
 type RegisterInput = z.infer<typeof RegisterSchema>;
 
 export default function RegisterForm() {
-	const { handleAuth } = useAuth();
-
+	const { handleAuth, isAuth } = useAuth();
 	// Mutations
 	const { mutate, isLoading } = useMutation(
 		(payload: RegisterInput) =>
@@ -46,37 +53,83 @@ export default function RegisterForm() {
 		}
 	);
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors, isDirty },
-	} = useForm<RegisterInput>({ resolver: zodResolver(RegisterSchema) });
+	const form = useForm<RegisterInput>({
+		resolver: zodResolver(RegisterSchema),
+	});
 	const onSubmit: SubmitHandler<RegisterInput> = (data: RegisterInput) => {
 		mutate(data);
 	};
 
 	return (
-		<form
-			className='flex flex-col gap-2 w-[40%] mx-auto'
-			onSubmit={handleSubmit(onSubmit)}
-		>
-			<Label htmlFor='username'>Username</Label>
-			<Input id='username' {...register("username")} />
-			{errors.username ? <div>{errors.username.message}</div> : null}
-			<Label htmlFor='email'>Email</Label>
-			<Input id='email' {...register("email")} />
-			{errors.email ? <div>{errors.email.message}</div> : null}
-			<Label htmlFor='password'>Password</Label>
-			<Input id='password' {...register("password")} />
-			{errors.password ? <div>{errors.password.message}</div> : null}
-			<Label htmlFor='passwordConfirm'>Password Confirm</Label>
-			<Input id='passwordConfirm' {...register("passwordConfirm")} />
-			{errors.passwordConfirm ? (
-				<div>{errors.passwordConfirm.message}</div>
-			) : null}
-			<Button disabled={!isDirty || isLoading} type='submit' variant='default'>
-				Login
-			</Button>
-		</form>
+		<Form {...form}>
+			<form
+				className='flex flex-col gap-2 w-[40%] mx-auto'
+				onSubmit={form.handleSubmit(onSubmit)}
+			>
+				<FormField
+					control={form.control}
+					name='username'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input placeholder='Username' {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='email'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Email</FormLabel>
+							<FormControl>
+								<Input type='email' placeholder='Email' {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='password'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input type='password' placeholder='password' {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='passwordConfirm'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Confirm Password</FormLabel>
+							<FormControl>
+								<Input
+									type='password'
+									placeholder='confirm password'
+									{...field}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<Button
+					disabled={!form.formState.isDirty || isLoading}
+					type='submit'
+					variant='default'
+				>
+					Login
+				</Button>
+			</form>
+		</Form>
 	);
 }

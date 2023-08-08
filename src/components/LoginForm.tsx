@@ -1,10 +1,18 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-import { Button, Input, Label } from "./ui/forward";
+import { Button, Input } from "./ui/forward";
 import { useAuth } from "@/auth-provider";
 import { useMutation } from "react-query";
 import request from "@/services";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
 
 const LoginSchema = z.object({
 	username: z
@@ -39,30 +47,47 @@ export default function LoginForm() {
 		}
 	);
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors, isDirty },
-	} = useForm<LoginInput>({ resolver: zodResolver(LoginSchema) });
+	const form = useForm<LoginInput>({ resolver: zodResolver(LoginSchema) });
 	const onSubmit: SubmitHandler<LoginInput> = (data: LoginInput) => {
 		mutate(data);
 	};
 
 	return (
-		<form
-			className='flex flex-col gap-2 w-[40%] mx-auto'
-			onSubmit={handleSubmit(onSubmit)}
-		>
-			<Label htmlFor='username'>Username</Label>
-			<Input id='username' {...register("username")} />
-			{errors.username ? <div>{errors.username.message}</div> : null}
-
-			<Label htmlFor='password'>Password</Label>
-			<Input id='password' {...register("password")} />
-			{errors.password ? <div>{errors.password.message}</div> : null}
-			<Button disabled={!isDirty || isLoading} type='submit'>
-				Login
-			</Button>
-		</form>
+		<Form {...form}>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className='flex flex-col gap-2 w-[40%] mx-auto'
+			>
+				<FormField
+					control={form.control}
+					name='username'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input placeholder='username' {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='password'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input type='password' placeholder='password' {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<Button disabled={!form.formState.isDirty || isLoading} type='submit'>
+					Login
+				</Button>
+			</form>
+		</Form>
 	);
 }

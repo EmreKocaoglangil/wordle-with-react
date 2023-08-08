@@ -24,7 +24,7 @@ type AuthProviderState = {
 
 const initialState = {
 	isAuth: false,
-	User: {
+	User: JSON.parse(localStorage.getItem("user") || "false") || {
 		username: "",
 		email: "",
 	},
@@ -36,13 +36,13 @@ const AuthProviderContext = createContext<AuthProviderState>(initialState);
 
 export function AuthProvider({ children, ...props }: AuthProviderProps) {
 	const [user, setUser] = useState<User>(
-		JSON.parse(localStorage.getItem("user") || "false") && {
+		JSON.parse(localStorage.getItem("user") || "false") || {
 			username: "",
 			email: "",
 		}
 	);
 
-	const isAuth = Boolean(user.email && user.username);
+	const isAuth = Boolean(user.email && user.email);
 
 	const handleLogout = useCallback(() => {
 		localStorage.removeItem("user");
