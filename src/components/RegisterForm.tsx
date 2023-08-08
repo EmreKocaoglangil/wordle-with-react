@@ -41,7 +41,7 @@ export default function RegisterForm() {
 	// Mutations
 	const { mutate, isLoading } = useMutation(
 		(payload: RegisterInput) =>
-			request(import.meta.env.VITE_APP_API_URL + "/registera", {
+			request(import.meta.env.VITE_APP_API_URL + "/register", {
 				method: "POST",
 				body: JSON.stringify(payload),
 			}),
