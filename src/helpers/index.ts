@@ -53,4 +53,8 @@ const testTurkishLetter = (inputText: string) => {
 	return regex.test(inputText);
 };
 
-export { handleResult, testTurkishLetter };
+const whiteSpaceConverter = (size: number) => {
+	return new Array(size).fill(" ").join("");
+};
+
+export { handleResult, testTurkishLetter, whiteSpaceConverter };

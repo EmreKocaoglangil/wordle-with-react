@@ -22,7 +22,7 @@ const worker = setupWorker(
 	}),
 	rest.get(import.meta.env.VITE_APP_API_URL + "/logout", (req, res, ctx) => {
 		return res(
-			ctx.delay(2000),
+			ctx.delay(5000),
 			ctx.json({
 				message: "Çıkış yapıldı..",
 			}),
