@@ -14,6 +14,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "prettier", "import"],
   rules: {
+    "jsx-a11y/label-has-associated-control": "off",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
