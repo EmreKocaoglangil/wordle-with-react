@@ -4,13 +4,11 @@ import { cn } from "@/lib/utils";
 import Icon from "./Icon";
 
 const buttonVariants = cva(
-  "relative inline-flex cursor-pointer items-center justify-center rounded-lg",
+  "relative inline-flex cursor-pointer items-center justify-center rounded-md border-2 border-primary-foreground bg-primary-background text-primary-foreground dark:border-none dark:bg-darkGreen",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        primary:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        primary: "bg-green text-primary-foreground",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -18,11 +16,10 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
       },
       disabled: {
-        true: "pointer-events-none opacity-70",
+        true: "cursor-not-allowed opacity-70",
       },
     },
     defaultVariants: {
-      variant: "default",
       size: "default",
     },
   }
@@ -37,30 +34,27 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      className,
-      type,
-      loading = false,
-      disabled,
-      label,
-      variant,
-      size,
-      ...props
-    },
+    { className, loading = false, disabled, label, variant, size, ...props },
     ref
   ) => (
+    // eslint-disable-next-line react/button-has-type
     <button
-      type={type}
       disabled={!!disabled || loading}
       className={cn(buttonVariants({ variant, size, disabled, className }), {
-        "text-transparent cursor-not-allowed": loading,
+        "text-transparent border-primary-foreground cursor-not-allowed":
+          loading,
       })}
       ref={ref}
       {...props}
     >
       {loading && (
-        <div className="center">
-          <Icon className="spinner_P7sC" height="20" width="20" icon="loader" />
+        <div className="center w-fit">
+          <Icon
+            className="spinner_P7sC fill-primary-foreground"
+            height="20"
+            width="20"
+            icon="loader"
+          />
         </div>
       )}
       {label}

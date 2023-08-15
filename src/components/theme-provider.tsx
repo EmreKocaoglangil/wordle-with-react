@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
