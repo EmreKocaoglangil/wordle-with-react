@@ -21,6 +21,16 @@ export default {
       },
     },
     extend: {
+      colors: {
+        green: "#6aaa64",
+        darkGreen: "#538d4e",
+        yellow: "#c9b45",
+        gray: "#86888a",
+        primary: {
+          background: "var(--background)",
+          foreground: "var(--foreground)",
+        },
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -43,64 +53,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "shake-animate": "shake-animate 0.3s ease-in",
       },
-      colors: {
-        green: "var(--green)",
-        darkendGreen: "var(--darkendGreen)",
-        yellow: "var(--yellow)",
-        darkendYellow: "var(--darkendYellow)",
-        spellingBeeYellow: "var(--spellingBeeYellow)",
-        lightGray: "var(--lightGray)",
-        gray: "var(--gray)",
-        "gray-2": "var(--gray-2)",
-        "gray-3": "var(--gray-3)",
-        "gray-4": "var(--gray-4)",
-        darkGray: "var(--darkGray)",
-        white: "var(--white)",
-        black: "var(--black)",
-        "black-2": "var(--black-2)",
-        "black-3": "var(--black-3)",
-        "black-4": "var(--black-4)",
-        "blue-2": "var(--blue-2)",
-        "blue-5": "var(--blue-5)",
-        orange: "var(--orange)",
-        blue: "var(--blue)",
-        outlineBlue: "var(--outlineBlue)",
-        linkBlue: "var(--linkBlue)",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [],
 };

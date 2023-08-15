@@ -1,11 +1,11 @@
-import { ModeToggle } from "./mode-toggle";
+import ModeToggle from "./mode-toggle";
 
-const Header = () => {
-	return (
-		<div>
-			<ModeToggle />
-		</div>
-	);
-};
+function Header() {
+  return (
+    <div>
+      <ModeToggle />
+    </div>
+  );
+}
 
 export default Header;
