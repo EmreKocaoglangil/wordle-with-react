@@ -6,7 +6,7 @@ function Header() {
   // const [dialogContent, setDialogContent] = useState("");
 
   return (
-    <div className="relative flex justify-between border-[1px] border-gray px-2 py-4">
+    <div className="relative flex justify-between border-b-[1px] border-gray px-2 py-4">
       <ModeToggle />
       <h1 className="center font-Title text-3xl">WORDLE TR</h1>
       <div className="flex items-center gap-2">
