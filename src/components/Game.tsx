@@ -208,7 +208,7 @@ function Game() {
   });
 
   return (
-    <div className="font-poppins mt-3">
+    <div className="mt-3 ">
       {word.map((row: wordType[], rowIdx) => (
         <div className="mx-auto mb-[5px] flex w-fit gap-[5px]" key={rowIdx}>
           {row.map((col, colIdx) => (
@@ -221,6 +221,7 @@ function Game() {
                   "bg-green": col.state === "correct",
                   "bg-gray": col.state === "absent",
                   "bg-yellow": col.state === "present",
+                  "text-white": rowIdx < pos.currentRow,
                 }
               )}
               key={colIdx}
