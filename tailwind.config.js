@@ -56,6 +56,9 @@ export default {
         "shake-animate": "shake-animate 0.3s ease-in",
       },
     },
+    fontFamily: {
+      Inter: ['"Inter"', "sans-serif"],
+    },
   },
   plugins: [],
 };

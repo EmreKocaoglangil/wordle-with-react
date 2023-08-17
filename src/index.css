@@ -27,7 +27,7 @@
 
   body,
   #root {
-    @apply min-h-[100vh] w-full bg-primary-background text-primary-foreground
+    @apply min-h-[100vh] w-full bg-primary-background text-primary-foreground font-Inter
   }
 }
 
