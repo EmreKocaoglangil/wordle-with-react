@@ -1,30 +1,18 @@
+// import { useState } from "react";
 import ModeToggle from "./mode-toggle";
-import Icon from "./ui/Icon";
+import DialogComponent from "./DialogComponent";
 
 function Header() {
+  // const [dialogContent, setDialogContent] = useState("");
+
   return (
-    <div className="flex justify-between border-2 border-gray px-2 py-4">
+    <div className="relative flex justify-between border-[1px] border-gray px-2 py-4">
       <ModeToggle />
-      <h1 className="font-Title text-2xl">WORDLE TR</h1>
+      <h1 className="center font-Title text-3xl">WORDLE TR</h1>
       <div className="flex items-center gap-2">
-        <Icon
-          className="cursor-pointer fill-primary-foreground"
-          width="30"
-          height="30"
-          icon="settings"
-        />
-        <Icon
-          className="cursor-pointer fill-primary-foreground"
-          width="30"
-          height="30"
-          icon="stats"
-        />
-        <Icon
-          className="cursor-pointer fill-primary-foreground"
-          width="30"
-          height="30"
-          icon="info"
-        />
+        <DialogComponent icon="info" />
+        <DialogComponent icon="settings" />
+        <DialogComponent icon="stats" />
       </div>
     </div>
   );

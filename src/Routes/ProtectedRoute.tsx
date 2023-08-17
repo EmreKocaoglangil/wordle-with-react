@@ -2,12 +2,12 @@ import { Outlet, Navigate, useLocation } from "react-router-dom";
 
 interface RequireAuthProps {
   path: string;
-  isAuth: boolean;
+  condition: boolean;
 }
 
-function ProtectedRoute({ path, isAuth }: RequireAuthProps) {
+function ProtectedRoute({ path, condition }: RequireAuthProps) {
   const location = useLocation();
-  return isAuth ? (
+  return condition ? (
     <Outlet />
   ) : (
     <Navigate state={{ from: location }} to={path} replace />

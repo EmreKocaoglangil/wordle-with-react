@@ -31,10 +31,7 @@ export default function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="cursor-pointer bg-primary-background"
-      >
+      <DropdownMenuContent align="end" className="bg-primary-background">
         <DropdownMenuItem onClick={() => handleTheme("light")}>
           Light
         </DropdownMenuItem>

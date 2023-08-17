@@ -18,12 +18,14 @@ const Router = () => {
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<MainRootLayout />}>
-          <Route element={<ProtectedRoute isAuth={isAuth} path="register" />}>
+          <Route
+            element={<ProtectedRoute condition={isAuth} path="register" />}
+          >
             <Route index element={<Game />} />
             <Route path="*" element={<Game />} />
           </Route>
         </Route>
-        <Route element={<ProtectedRoute isAuth={!isAuth} path="/" />}>
+        <Route element={<ProtectedRoute condition={!isAuth} path="/" />}>
           <Route element={<AuthRootLayout />}>
             <Route path="register" element={<RegisterForm />} />
             <Route path="login" element={<LoginForm />} />
