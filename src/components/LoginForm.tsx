@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { useMutation } from "react-query";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/auth-provider";
 import request from "@/services";
 import { Button, Input } from "./ui/forward";
@@ -53,36 +54,42 @@ export default function LoginForm() {
     mutate(data);
   };
 
-  console.log(errors);
-
   return (
-    <form
-      className="mx-auto flex w-[40%] flex-col gap-2"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <label htmlFor="">Username</label>
-      <Input
-        error={!!errors.username}
-        placeholder="Username"
-        {...register("username")}
-      />
+    <div className="mx-auto w-[40%]">
+      <header>
+        <h1 className="text-center text-xl">Login</h1>
+      </header>
+      <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="">Username</label>
+        <Input
+          error={!!errors.username}
+          placeholder="Username"
+          {...register("username")}
+        />
 
-      <label>Password</label>
-      <Input
-        error={!!errors.password}
-        type="password"
-        placeholder="password"
-        {...register("password")}
-      />
+        <label>Password</label>
+        <Input
+          error={!!errors.password}
+          type="password"
+          placeholder="password"
+          {...register("password")}
+        />
 
-      <Button
-        size="default"
-        disabled={!isDirty}
-        loading={isLoading}
-        type="submit"
-        className="w-full"
-        label="Login"
-      />
-    </form>
+        <Button
+          size="default"
+          disabled={!isDirty}
+          loading={isLoading}
+          type="submit"
+          className="w-full"
+          label="Login"
+        />
+        <p>
+          Henüz hesabınız yoksa{" "}
+          <Link className="font-bold dark:text-green" to="/register">
+            Kayıt olun
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 }

@@ -1,40 +1,37 @@
 import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-	Navigate,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
 } from "react-router-dom";
 import MainRootLayout from "@/pages/Main/MainRootLayout";
 import AuthRootLayout from "@/pages/Auth/AuthRootLayout";
-import RequireAuth from "./RequireAuth";
 import Game from "@/components/Game";
 import LoginForm from "@/components/LoginForm";
 import RegisterForm from "@/components/RegisterForm";
 import { useAuth } from "@/auth-provider";
+import ProtectedRoute from "./ProtectedRoute";
 
-export const router = () => {
-	const { isAuth } = useAuth();
+const Router = () => {
+  const { isAuth } = useAuth();
 
-	return createBrowserRouter(
-		createRoutesFromElements(
-			<Route>
-				<Route path='/' element={<MainRootLayout />}>
-					<Route element={<RequireAuth />}>
-						<Route index element={<Game />} />
-						<Route path='*' element={<Game />} />
-					</Route>
-				</Route>
-				<Route element={<AuthRootLayout />}>
-					<Route
-						path='register'
-						element={!isAuth ? <RegisterForm /> : <Navigate to='/' replace />}
-					/>
-					<Route
-						path='login'
-						element={!isAuth ? <LoginForm /> : <Navigate to='/' replace />}
-					/>
-				</Route>
-			</Route>
-		)
-	);
+  return createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<MainRootLayout />}>
+          <Route element={<ProtectedRoute isAuth={isAuth} path="register" />}>
+            <Route index element={<Game />} />
+            <Route path="*" element={<Game />} />
+          </Route>
+        </Route>
+        <Route element={<ProtectedRoute isAuth={!isAuth} path="/" />}>
+          <Route element={<AuthRootLayout />}>
+            <Route path="register" element={<RegisterForm />} />
+            <Route path="login" element={<LoginForm />} />
+          </Route>
+        </Route>
+      </Route>
+    )
+  );
 };
+
+export default Router;

@@ -24,8 +24,10 @@ export default {
       colors: {
         green: "#6aaa64",
         darkGreen: "#538d4e",
-        yellow: "#c9b45",
+        yellow: "#b59f3b",
         gray: "#86888a",
+        darkGray: "#3a3a3c",
+        ligthGray: "#d3d6da",
         primary: {
           background: "var(--background)",
           foreground: "var(--foreground)",

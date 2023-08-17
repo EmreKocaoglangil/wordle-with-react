@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Icon from "./Icon";
 
 const buttonVariants = cva(
-  "relative inline-flex cursor-pointer items-center justify-center rounded-md border-2 border-primary-foreground bg-primary-background text-primary-foreground dark:border-none dark:bg-darkGreen",
+  "relative inline-flex cursor-pointer items-center justify-center rounded-md border-2 border-primary-foreground bg-primary-background text-primary-foreground dark:border-none dark:bg-green",
   {
     variants: {
       variant: {
@@ -28,13 +28,24 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "disabled">,
     VariantProps<typeof buttonVariants> {
-  label: string;
+  label?: string;
   loading?: boolean;
+  icon?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, loading = false, disabled, label, variant, size, ...props },
+    {
+      className,
+      loading = false,
+      icon = false,
+      children,
+      disabled,
+      label,
+      variant,
+      size,
+      ...props
+    },
     ref
   ) => (
     // eslint-disable-next-line react/button-has-type
@@ -57,7 +68,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           />
         </div>
       )}
-      {label}
+      {label && label}
+      {icon && children}
     </button>
   )
 );

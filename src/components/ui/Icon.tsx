@@ -1,9 +1,8 @@
 import React from "react";
 
 // then define an Icon component that references the
-export type IconTypes = "lock" | "loader";
 interface IIcon extends React.ComponentPropsWithoutRef<"svg"> {
-  icon: IconTypes;
+  icon: string;
 }
 
 function Icon({ icon, ...props }: IIcon) {

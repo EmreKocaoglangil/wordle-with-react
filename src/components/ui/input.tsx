@@ -19,7 +19,7 @@ const inputVariants = cva(
         icon: "h-10 w-10",
       },
       error: {
-        true: "border-red-500 focus:outline-none",
+        true: "border-red-500 focus:border-red-500 focus:outline-none",
       },
     },
     defaultVariants: {

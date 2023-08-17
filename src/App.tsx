@@ -1,14 +1,14 @@
 import { RouterProvider } from "react-router-dom";
-import { router } from "@/Routes/index";
+import Router from "@/Routes/index";
 import { Toaster } from "@/components/ui/toaster";
 
 function App() {
-	return (
-		<>
-			<Toaster />
-			<RouterProvider router={router()} />
-		</>
-	);
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={Router()} />
+    </>
+  );
 }
 
 export default App;

@@ -120,6 +120,28 @@ function Game() {
         state: null,
       },
     ],
+    [
+      {
+        letter: "",
+        state: null,
+      },
+      {
+        letter: "",
+        state: null,
+      },
+      {
+        letter: "",
+        state: null,
+      },
+      {
+        letter: "",
+        state: null,
+      },
+      {
+        letter: "",
+        state: null,
+      },
+    ],
   ]);
 
   const [pos, setPos] = useState({
@@ -152,7 +174,7 @@ function Game() {
       } else if (
         e.key === "Enter" &&
         pos.currentCol > 4 &&
-        pos.currentRow !== 5
+        pos.currentRow !== 6
       ) {
         setWord(
           word.map((row, i) => {
@@ -186,19 +208,19 @@ function Game() {
   });
 
   return (
-    <div className="mt-3 bg-yellow">
+    <div className="mt-3">
       {word.map((row: wordType[], rowIdx) => (
-        <div className="mx-auto mb-4 flex w-fit gap-4" key={rowIdx}>
+        <div className="mx-auto mb-[5px] flex w-fit gap-[5px]" key={rowIdx}>
           {row.map((col, colIdx) => (
             <span
               className={clsx(
-                "flex h-[50px] w-[50px] items-center justify-center border border-green",
+                "flex h-[60px] w-[60px] items-center justify-center border-2 border-ligthGray text-[2rem] font-bold text-primary-foreground dark:border-darkGray",
                 {
                   "animate-shake-animate":
                     pos.currentCol === colIdx && rowIdx === pos.currentRow,
-                  "bg-yellow": col.state === "present",
                   "bg-green": col.state === "correct",
                   "bg-gray": col.state === "absent",
+                  "bg-yellow": col.state === "present",
                 }
               )}
               key={colIdx}
