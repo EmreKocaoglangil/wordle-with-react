@@ -25,6 +25,7 @@ module.exports = {
     "react/require-default-props": "off",
     "import/extensions": "off",
     "react/prop-types": "off",
+    "import/no-extraneous-dependencies": "off",
   },
   settings: {
     "import/resolver": {

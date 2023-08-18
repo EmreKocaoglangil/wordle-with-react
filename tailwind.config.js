@@ -43,17 +43,19 @@ export default {
           to: { height: 0 },
         },
         "shake-animate": {
-          "20%": { transform: "translateX(-10px)" },
-          "40%": { transform: "translateX(+10px)" },
-          "60%": { transform: "translateX(-5px)" },
-          "80%": { transform: "translateX(+5px)" },
-          "100%": { transform: "translateX(0)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
+        },
+        "rotate-animate": {
+          "50%": { transform: "rotateX(90deg)" },
+          "100%": { transform: "rotateX(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "shake-animate": "shake-animate 0.3s ease-in",
+        shake: "shake-animate 0.1s ease-in",
+        rotate: "rotate-animate 0.4s ease-in",
       },
     },
     fontFamily: {

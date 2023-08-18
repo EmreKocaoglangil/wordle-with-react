@@ -3,8 +3,6 @@ import ModeToggle from "./mode-toggle";
 import DialogComponent from "./DialogComponent";
 
 function Header() {
-  // const [dialogContent, setDialogContent] = useState("");
-
   return (
     <div className="relative flex justify-between border-b-[1px] border-gray px-2 py-4">
       <ModeToggle />
