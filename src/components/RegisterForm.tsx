@@ -3,8 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { useMutation } from "react-query";
 import { Link } from "react-router-dom";
-import { useAuth } from "@/auth-provider";
 import request from "@/services";
+import { useAppDispatch } from "@/libs/redux/hook";
+import { login } from "@/libs/redux/userSlice";
 import { Button, Input } from "./ui/forward";
 import { useToast } from "./ui/use-toast";
 
@@ -29,7 +30,7 @@ const RegisterSchema = z
 type RegisterInput = z.infer<typeof RegisterSchema>;
 
 export default function RegisterForm() {
-  const { handleAuth } = useAuth();
+  const dispatch = useAppDispatch();
   const { toast } = useToast();
   // Mutations
   const { mutate, isLoading } = useMutation(
@@ -40,7 +41,7 @@ export default function RegisterForm() {
       }),
     {
       onSuccess: (result) => {
-        handleAuth(result);
+        dispatch(login(result));
       },
       onError: () => {
         toast({
